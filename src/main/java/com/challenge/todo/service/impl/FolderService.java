@@ -2,6 +2,7 @@ package com.challenge.todo.service.impl;
 
 import com.challenge.todo.converters.FolderConverter;
 import com.challenge.todo.dto.FolderDTO;
+import com.challenge.todo.dto.RequestFolderDTO;
 import com.challenge.todo.models.Folder;
 import com.challenge.todo.repositories.FolderRepository;
 import com.challenge.todo.service.IFolderService;
@@ -27,4 +28,22 @@ public class FolderService implements IFolderService {
 
         return foldersDTO;
     }
+
+    @Override
+    public void createFolder(RequestFolderDTO requestFolderDTO) {
+        folderRepository.save(FolderConverter.requestFolderToFolder(requestFolderDTO));
+    }
+
+    @Override
+    public void updateFolder(RequestFolderDTO requestFolderDTO, Long id) {
+        Folder folder = folderRepository.getById(id);
+        folder.setName(requestFolderDTO.getName());
+        folderRepository.save(folder);
+    }
+
+    @Override
+    public void deleteFolder(Long id) {
+        folderRepository.deleteById(id);
+    }
+
 }
