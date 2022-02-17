@@ -7,5 +7,4 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RequestFolderDTO {
     private String name;
-
 }
