@@ -58,12 +58,18 @@ public class TodoController {
     public String deleteTodo(@PathVariable("idFolder") Long idFolder, @PathVariable("idTodo") Long idTodo){
         folderService.deleteTodo(idFolder, idTodo);
         todoService.deleteTodo(idTodo);
-        return "To do deleted succssefully";
+        return "To do deleted successfully";
     }
 
     @PutMapping("/{idFolder}/todos/{idTodo}")
     public String updateTodo(@PathVariable("idFolder") Long idFolder, @PathVariable("idTodo") Long idTodo, @RequestBody RequestTodoDTO requestTodoDTO){
         todoService.updateTodo(requestTodoDTO, idTodo);
+        return "To do updated successfully";
+    }
+
+    @PutMapping("/{idFolder}/todos/{idTodo}/complete")
+    public String completeTodo(@PathVariable("idFolder") Long idFolder, @PathVariable("idTodo") Long idTodo){
+        todoService.completeTodo(idTodo);
         return "To do updated successfully";
     }
 }
