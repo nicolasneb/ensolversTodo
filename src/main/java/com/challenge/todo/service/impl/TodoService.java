@@ -29,4 +29,11 @@ public class TodoService implements ITodoService {
     public void deleteTodo(Long id) {
         todoRespository.deleteById(id);
     }
+
+    @Override
+    public void completeTodo(Long id) {
+        Todo todo = todoRespository.getById(id);
+        todo.setCompleted(!todo.isCompleted());
+        todoRespository.save(todo);
+    }
 }
