@@ -10,5 +10,6 @@ import java.util.List;
 @NoArgsConstructor
 public class FolderDTO {
     private long id;
+    private String name;
     private List<TodoDTO> todos;
 }
